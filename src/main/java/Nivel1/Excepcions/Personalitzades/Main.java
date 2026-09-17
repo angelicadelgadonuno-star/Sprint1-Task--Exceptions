@@ -6,7 +6,7 @@ import java.util.List;
 public class Main {
     static void main(String[] args) {
 
-        System.out.println("Test1: Empty sale ");
+        System.out.println("--- Test1: Empty sale --- ");
 
         Sale emptySale = new Sale();
 
@@ -14,10 +14,10 @@ public class Main {
             emptySale.calculateTotal();
 
         } catch (EmptySaleException e) {
-            System.out.println("Error " + e.getMessage());
+            System.out.println(" ❌ Error " + e.getMessage());
         }
 
-        System.out.println("Test2: IndexOutOfBoundsException" );
+        System.out.println("--- Test2: IndexOutOfBoundsException ---" );
 
         ArrayList<Product> lista = new ArrayList<>();
         lista.add(new Product("Milk", 1.20));
@@ -26,11 +26,8 @@ public class Main {
         try {
             lista.get(5);
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("Error " + e.getMessage());
+            System.out.println(" ❌ Error " + e.getMessage());
         }
-
-
-
 
 }
     }
