@@ -17,7 +17,7 @@ public class ConsoleReader {
                 return age;
 
             } catch (InputMismatchException e) {
-                System.out.println("❌ Format Error: please try again!");
+                System.out.println(" ❌ Format Error: please enter a valid number");
                 entry.nextLine();
             }
         }
@@ -110,6 +110,10 @@ public class ConsoleReader {
             }
 
             }
+    public static boolean readYesNo (String message) {
+
+    }
+
 
         }
 
