@@ -91,8 +91,27 @@ public class ConsoleReader {
             }
         }
     }
+
     public static String readString (String message){
 
+        while (true){
+            try {
+                System.out.println(message);
+                String phrase = entry.nextLine();
 
-    }
-}
+                if (phrase.length() < 4) {
+                    throw new StringTooShortException( "❌ Error: the word must have at least 4 letters");
+                }
+                return phrase;
+
+            } catch (StringTooShortException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+
+            }
+
+        }
+
+
+
