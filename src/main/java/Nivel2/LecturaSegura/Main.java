@@ -9,6 +9,7 @@ public class Main {
         double weight = ConsoleReader.readDouble("Enter your weight in kilograms");
         char number = ConsoleReader.readChar ("Choose a number from 1-9");
         String phrase = ConsoleReader.readString("Enter a 4 letter word");
+        boolean question = ConsoleReader.readYesNo("Are you married?");
 
 
     }

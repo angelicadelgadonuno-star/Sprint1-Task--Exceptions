@@ -123,7 +123,7 @@ public class ConsoleReader {
                     if (question.equals("n")) {
                         return false;
                     }
-                    throw new InvalidYesNoException("❌ Error: just type ´s´ for Yes or ´n´ for No");
+                    throw new InvalidYesNoException("❌ Error: just type 's' for Yes or 'n' for No");
 
                 } catch (InvalidYesNoException e) {
                     System.out.println(e.getMessage());
