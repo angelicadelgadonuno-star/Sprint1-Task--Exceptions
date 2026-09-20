@@ -112,10 +112,25 @@ public class ConsoleReader {
             }
     public static boolean readYesNo (String message) {
 
+            while (true) {
+                try {
+                    System.out.println(message);
+                    String question = entry.nextLine();
+
+                    if (question.equals("s")) {
+                        return true;
+                    }
+                    if (question.equals("n")) {
+                        return false;
+                    }
+                    throw new InvalidYesNoException("❌ Error: just type ´s´ for Yes or ´n´ for No");
+
+                } catch (InvalidYesNoException e) {
+                    System.out.println(e.getMessage());
+                }
+
+            }
     }
-
-
-        }
-
+}
 
 
