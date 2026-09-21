@@ -5,11 +5,11 @@ import java.util.List;
 
 public class Sale {
 
-    static List <Product> products = new ArrayList<>();
+    private List <Product> products = new ArrayList<>();
     private double totalPrice;
 
 
-    public static void addProducts (Product product) {
+    public void addProducts (Product product) {
         products.add(product);
     }
 

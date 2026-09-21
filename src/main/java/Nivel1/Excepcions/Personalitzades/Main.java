@@ -3,8 +3,6 @@ package Nivel1.Excepcions.Personalitzades;
 import java.util.ArrayList;
 import java.util.List;
 
-import static Nivel1.Excepcions.Personalitzades.Sale.products;
-
 public class Main {
     static void main(String[] args) {
 
