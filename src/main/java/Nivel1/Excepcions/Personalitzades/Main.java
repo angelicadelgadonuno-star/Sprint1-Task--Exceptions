@@ -3,6 +3,8 @@ package Nivel1.Excepcions.Personalitzades;
 import java.util.ArrayList;
 import java.util.List;
 
+import static Nivel1.Excepcions.Personalitzades.Sale.products;
+
 public class Main {
     static void main(String[] args) {
 
@@ -19,16 +21,27 @@ public class Main {
 
         System.out.println("--- Test2: IndexOutOfBoundsException ---" );
 
-        products.add
+        Sale sale = new Sale();
 
-        lista.add(new Product("Milk", 1.20));
-        lista.add(new Product("Bread", 0.90));
+        sale.addProducts(new Product("Bread", 0.90));
+        sale.addProducts(new Product("Milk", 2.50));
+        sale.addProducts(new Product("Organic Oatmeal", 2.99));
 
         try {
-            lista.get(5);
+             sale.getProducts().get(5);
         } catch (IndexOutOfBoundsException e) {
             System.out.println(" ❌ Error " + e.getMessage());
         }
 
-}
+        System.out.println("---Test3: Successful Purchase---");
+
+        Sale successfulSale = new Sale();
+
+        successfulSale.addProducts(new Product("Bread", 0.90));
+        successfulSale.addProducts(new Product("Milk", 2.50));
+        successfulSale.addProducts(new Product("Organic Oatmeal", 2.99));
+
+
+        System.out.println("Your total is: " + successfulSale.calculateTotal());
     }
+}

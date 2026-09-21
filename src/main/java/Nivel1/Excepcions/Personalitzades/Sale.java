@@ -5,11 +5,11 @@ import java.util.List;
 
 public class Sale {
 
-    private List <Product> products = new ArrayList<>();
+    static List <Product> products = new ArrayList<>();
     private double totalPrice;
 
 
-    public void addProducts (Product product) {
+    public static void addProducts (Product product) {
         products.add(product);
     }
 
@@ -18,19 +18,18 @@ public class Sale {
     }
 
 
-    public double calculateTotal()
-            throws EmptySaleException {
+    public double calculateTotal() {
 
-        if (products.isEmpty()) {
-            throw new EmptySaleException();
+            if (products.isEmpty()) {
+                throw new EmptySaleException();
+            }
+            totalPrice = 0;
+            for (Product p : products) {
+                totalPrice += p.getPrice();
+            }
+            return totalPrice;
         }
 
-        totalPrice = 0;
-        for (Product p : products) {
-            totalPrice += p.getPrice();
-        }
-        return totalPrice;
-    }
 
     public double getTotalPrice() {
         return totalPrice;
