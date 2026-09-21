@@ -19,7 +19,8 @@ public class Main {
 
         System.out.println("--- Test2: IndexOutOfBoundsException ---" );
 
-        ArrayList<Product> lista = new ArrayList<>();
+        products.add
+
         lista.add(new Product("Milk", 1.20));
         lista.add(new Product("Bread", 0.90));
 

@@ -42,7 +42,7 @@ public class ConsoleReader {
     public static float readFloat
             (String message) {
 
-        while (true) {
+        while (true) { // boolean
             try {
                 System.out.println(message);
                 float height = entry.nextFloat();

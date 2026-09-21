@@ -8,6 +8,16 @@ public class Sale {
     private List <Product> products = new ArrayList<>();
     private double totalPrice;
 
+
+    public void addProducts (Product product) {
+        products.add(product);
+    }
+
+    public List <Product> getProducts () {
+        return products;
+    }
+
+
     public double calculateTotal()
             throws EmptySaleException {
 
@@ -15,14 +25,11 @@ public class Sale {
             throw new EmptySaleException();
         }
 
+        totalPrice = 0;
         for (Product p : products) {
-            totalPrice = totalPrice + p.getPrice();
+            totalPrice += p.getPrice();
         }
         return totalPrice;
-    }
-
-    public void addProduct (Product p) {
-        products.add(p);
     }
 
     public double getTotalPrice() {
