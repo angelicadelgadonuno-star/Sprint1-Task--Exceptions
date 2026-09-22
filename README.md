@@ -1,43 +1,86 @@
-# Sprint 1 — Exceptions
+# Tasca S1.02 - Exceptions
 
-## What is this project about?
+## Description
 
-This project is part of Sprint 1 and focuses on **exception handling in Java**. The main goal is to make applications more robust by avoiding crashes when the user introduces wrong data or when the program tries to access something that does not exist.
+Java project focused on exception handling. The main goal is to build robust applications that don't crash when facing common errors such as invalid user input or access to non-existent data.
 
-The sprint is divided into different levels, and each one introduces new concepts step by step.
+The project follows a guided progression of three levels. Each level consolidates different concepts:
 
-## Level 1 — Custom exceptions and error control
+- Capturing and handling standard exceptions (`InputMismatchException`, `IndexOutOfBoundsException`).
+- Creating custom exceptions for domain-specific errors.
+- Validating user input to build safer and more user-friendly interfaces.
+- Separating responsibilities by dividing code into classes with distinct behaviors.
+- Applying best practices: clear naming, reusable methods, and proper error handling.
 
-In this level I worked with **custom exceptions** and **collections**.
+> **Note:** Only **Levels 1 and 2** have been implemented. Level 3 was not developed due to time constraints.
 
-I created a `Product` class with a `name` and a `price`, and a `Sale` class that stores a list of products and calculates the total price. If the sale has no products, the program throws a custom exception called `EmptySaleException` with a clear message instead of crashing.
+## Project Structure
 
-I also practised with `IndexOutOfBoundsException` by trying to access a position that does not exist in a list, and I captured it to show a friendly message.
+src/
+├── Nivel1/
+│   └── Excepcions/
+│       └── Personalitzades/
+│           ├── Main.java
+│           ├── Product.java
+│           ├── Sale.java
+│           └── EmptySaleException.java
+│
+└── Nivel2/
+└── LecturaSegura/
+├── Main.java
+├── ConsoleReader.java
+├── InvalidYesNoException.java
+├── SingleCharacterException.java
+└── StringTooShortException.java
 
-Finally, I changed `EmptySaleException` so that it extends `RuntimeException` instead of `Exception`. This helped me understand the difference between **checked** and **unchecked** exceptions:
+## Level 1 - Custom Exceptions and Error Control
 
-- **Checked exceptions** are verified at compile time. The programmer is forced to handle them with `try/catch` or to declare them with `throws`. They usually represent situations that can be recovered from, like reading a file.
-- **Unchecked exceptions** (children of `RuntimeException`) are not verified at compile time. They usually represent programming errors, like accessing an invalid index or dividing by zero.
+### Objective
 
-## Level 2 — Safe reading from the keyboard
+Create a custom exception, learn how to throw and catch it, work with collections (`ArrayList<Product>`), and handle common errors like `IndexOutOfBoundsException`.
 
-In this level I created a utility class called `ConsoleReader` that reads data from the keyboard in a safe way.
+### Implementation
 
-The class uses a single `Scanner` object and provides several **static methods**, one for each data type:
+- **`Product`**: Represents an individual product with `name` and `price`.
+- **`Sale`**: Contains a `List<Product>` and a `totalPrice`. The `calculateTotal()` method:
+   - Checks if the product list is empty.
+   - If empty, throws `EmptySaleException` with the message *"To make a sale you must add products first"*.
+   - If not, sums the prices and stores the total.
+- **`EmptySaleException`**: Extends `RuntimeException`, including the message in its constructor.
+- **`Main`**: Runs three tests:
+   1. Empty sale → catches `EmptySaleException`.
+   2. Access to a non-existent index → catches `IndexOutOfBoundsException`.
+   3. Successful sale → prints the total price.
 
-- `readByte`, `readInt`, `readFloat` and `readDouble` — these handle `InputMismatchException` when the user writes something that is not a valid number.
-- `readChar` — only accepts a single character, and throws a custom exception if the user writes more than one.
-- `readString` — reads a full line and can validate a minimum length.
-- `readYesNo` — returns `true` if the user writes `"s"` and `false` if they write `"n"`. Any other input throws a custom exception.
+### Checked vs Unchecked Exceptions
 
-All methods show a custom message, validate the input and keep asking until the value is correct.
+- **Checked exceptions** (extend `Exception`): Must be declared or caught at compile time. The compiler forces you to handle them.
+- **Unchecked exceptions** (extend `RuntimeException`): Not required to be declared or caught. They usually indicate programming errors.
 
-## Main ideas I learned
+By making `EmptySaleException` extend `RuntimeException`, we avoid forcing the caller to handle it explicitly, which is more convenient for a domain-specific business rule.
 
-- How to create and use **custom exceptions**.
-- The difference between **checked** and **unchecked** exceptions.
-- How to avoid crashes when the user introduces wrong data.
-- How to design **reusable static methods** with a clear structure.
-- The importance of separating responsibilities: input reading, validation and business logic.
+## Level 2 - Safe Keyboard Reading
 
+### Objective
 
+Learn to capture and handle exceptions when reading user input, preventing the application from crashing due to incorrect entries. Practice with standard exceptions (`InputMismatchException`) and custom ones. Consolidate the use of static methods for reusable code.
+
+### Implementation
+
+- **`ConsoleReader`**: Utility class with a single static `Scanner` and static methods that:
+   - Display a custom message.
+   - Read and validate the input.
+   - Show an error message and retry until valid.
+
+| Method | Description |
+|--------|-------------|
+| `readByte(String)` | Reads a `byte`, handles `InputMismatchException`. |
+| `readInt(String)` | Reads an `int`, handles `InputMismatchException`. |
+| `readFloat(String)` | Reads a `float`, handles `InputMismatchException`. |
+| `readDouble(String)` | Reads a `double`, handles `InputMismatchException`. |
+| `readChar(String)` | Reads a single char; throws `SingleCharacterException` if more than one is entered. |
+| `readString(String)` | Reads a string of at least 4 characters; throws `StringTooShortException`. |
+| `readYesNo(String)` | Accepts only `"s"` (true) or `"n"` (false); throws `InvalidYesNoException` otherwise. |
+
+- **Custom exceptions**: `SingleCharacterException`, `StringTooShortException`, `InvalidYesNoException` (all extend `Exception`).
+- **`Main`**: Tests all seven methods interactively.
