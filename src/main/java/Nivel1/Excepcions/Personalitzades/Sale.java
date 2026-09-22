@@ -5,9 +5,12 @@ import java.util.List;
 
 public class Sale {
 
-    private List <Product> products = new ArrayList<>();
+    private List <Product> products;
     private double totalPrice;
 
+    public Sale () {
+        this.products = new ArrayList<>();
+    }
 
     public void addProducts (Product product) {
         products.add(product);
@@ -16,7 +19,6 @@ public class Sale {
     public List <Product> getProducts () {
         return products;
     }
-
 
     public double calculateTotal() {
 
@@ -29,10 +31,4 @@ public class Sale {
             }
             return totalPrice;
         }
-
-
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
 }

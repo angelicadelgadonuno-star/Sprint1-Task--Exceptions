@@ -1,8 +1,5 @@
 package Nivel1.Excepcions.Personalitzades;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Main {
     static void main(String[] args) {
 
@@ -12,7 +9,6 @@ public class Main {
 
         try {
             emptySale.calculateTotal();
-
         } catch (EmptySaleException e) {
             System.out.println(" ❌ Error " + e.getMessage());
         }
@@ -38,7 +34,6 @@ public class Main {
         successfulSale.addProducts(new Product("Bread", 0.90));
         successfulSale.addProducts(new Product("Milk", 2.50));
         successfulSale.addProducts(new Product("Organic Oatmeal", 2.99));
-
 
         System.out.println("Your total is: " + successfulSale.calculateTotal());
     }
